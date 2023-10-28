@@ -1,0 +1,10 @@
+services:
+  mysql:
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=commandes_service'
+      - 'MYSQL_PASSWORD=etudiant'
+      - 'MYSQL_ROOT_PASSWORD=root'
+      - 'MYSQL_USER=etudiant'
+    ports:
+      - 3308:3306 # permet de faire le port forwarding entre le port 3306 du conteneur et le port 3308 de la machine hôte
