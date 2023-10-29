@@ -1,0 +1,114 @@
+services:
+  db_commande_service:
+    image: mysql:latest
+    container_name: db_commande_service
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: commandes_service
+        MYSQL_USER: etudiant
+        MYSQL_PASSWORD: etudiant
+    ports:
+        - "3308:3306"
+  db_user_sevice:
+    image: mysql:latest
+    container_name: db_user_service
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: user_service
+        MYSQL_USER: etudiant
+        MYSQL_PASSWORD: etudiant
+    ports:
+        - "3306:3306"
+  db_restaurant_service:
+    image: mysql:latest
+    container_name: db_restaurant_service
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: restaurant_service
+        MYSQL_USER: etudiant
+        MYSQL_PASSWORD: etudiant
+    ports:
+        - "3307:3306"
+  discovery-service:
+    container_name: discovery-service
+    build:
+      context: ./discovery-service
+      dockerfile: Dockerfile
+    environment:
+        - EUREKA_URI=http://discovery-service:9000/eureka
+        - EUREKA_INSTANCE_HOSTNAME=discovery-service
+        - EUREKA_REGISTER=false
+        - EUREKA_FETCH=false
+    ports:
+      - "9000:9000"
+
+  gateway-service:
+    container_name: gateway-service
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile
+    environment:
+        - 'EUREKA_URI=http://discovery-service:9000/eureka'
+        - 'USER_SERVICE_URI=http://user-service:9002'
+        - 'RESTAURANT_SERVICE_URI=http://restaurant-service:9003'
+        - 'COMMANDE_SERVICE_URI=http://commande-service:9004'
+    ports:
+      - "9001:9001"
+    depends_on:
+      - discovery-service
+      - db_user_sevice
+      - db_restaurant_service
+      - db_commande_service
+
+  user_service:
+    container_name: user-service
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:9000/eureka
+      - DB_HOST=db_user_service
+      - DB_PORT=3306
+      - DB_NAME=user_service
+      - DB_USER=etudiant
+      - DB_PASSWORD=etudiant
+    ports:
+      - "9002:9002"
+    depends_on:
+      - discovery-service
+      - db_user_sevice
+
+  restaurant_service:
+    container_name: restaurant-service
+    build:
+      context: ./restaurant-service
+      dockerfile: Dockerfile
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:9000/eureka
+      - DB_HOST=db_restaurant_service
+      - DB_PORT=3306
+      - DB_NAME=restaurant_service
+      - DB_USER=etudiant
+      - DB_PASSWORD=etudiant
+    ports:
+      - "9003:9003"
+    depends_on:
+      - discovery-service
+      - db_restaurant_service
+  commande_service:
+    container_name: commande-service
+    build:
+      context: ./commande-service
+      dockerfile: Dockerfile
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:9000/eureka
+      - DB_HOST=db_commande_service
+      - DB_PORT=3306
+      - DB_NAME=commandes_service
+      - DB_USER=etudiant
+      - DB_PASSWORD=etudiant
+    ports:
+      - "9004:9004"
+    depends_on:
+      - discovery-service
+      - db_commande_service
