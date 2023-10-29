@@ -1,0 +1,4 @@
+# au prealable, avoir docker compose d'installer
+
+# commande docker-compose pour lancer le projet
+docker compose -f /home/babacar/Bureau/work/tp_microservices_2023/docker-compose.yaml -p tp_microservices_2023 up --force-recreate -d --build
