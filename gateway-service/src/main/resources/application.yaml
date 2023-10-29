@@ -13,11 +13,11 @@ spring:
         - id: restaurant-service
           uri: ${RESTAURANT_SERVICE_URI:http://localhost:9003}
           predicates:
-            - Path=/api/restaurant/**
+            - Path=/api/restaurants/**
         - id: commande-service
           uri: ${COMMANDE_SERVICE_URI:http://localhost:9004}
           predicates:
-            - Path=/api/commande/**
+            - Path=/api/commandes/**
         # ceci permet de rediriger les requetes vers le service de decouverte ; par exemple, pour le service user-service, les requetes vers http://localhost:9001/api/restaurant-client/** seront redirigees vers http://localhost:9002/api/restaurant-client/**
 
 eureka:

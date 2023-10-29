@@ -95,11 +95,13 @@ services:
     depends_on:
       - discovery-service
       - db_restaurant_service
-  commande_service:
-    container_name: commande-service
+  commande-service:
+    #container_name: commande-service
     build:
       context: ./commande-service
       dockerfile: Dockerfile
+    deploy:
+      replicas: 2
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:9000/eureka
       - DB_HOST=db_commande_service
@@ -107,8 +109,6 @@ services:
       - DB_NAME=commandes_service
       - DB_USER=etudiant
       - DB_PASSWORD=etudiant
-    ports:
-      - "9004:9004"
     depends_on:
       - discovery-service
       - db_commande_service

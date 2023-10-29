@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "eeb98314-ae85-4929-b98d-449e46d57453",
+		"name": "tp_microservice_2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12306113"
+	},
+	"item": [
+		{
+			"name": "create restaurant client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Babacar NDIAYE\",\n  \"email\": \"baba@gmail.com\",\n  \"phoneNumber\": \"771234567\",\n  \"address\": \"oukam, rue 45 villa 23\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/restaurant-client",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"restaurant-client"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get restaurant client by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Babacar NDIAYE\",\n  \"email\": \"baba@gmail.com\",\n  \"phoneNumber\": \"771234567\",\n  \"address\": \"oukam, rue 45 villa 23\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/restaurant-client/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"restaurant-client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create restaurant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"The Cozy Cafe\",\n    \"address\": \"123 Main Street, Anytown, USA\",\n    \"phoneNumber\": \"+1 (555) 123-4567\",\n    \"menusRestaurant\": [\n        {\n            \"name\": \"Breakfast Special\",\n            \"description\": \"Scrambled eggs, bacon, and toast\",\n            \"price\": 9.99,\n            \"type\": \"Breakfast\",\n            \"restaurantName\": \"The Cozy Cafe\"\n        },\n        {\n            \"name\": \"Lunch Combo\",\n            \"description\": \"Sandwich, soup, and salad\",\n            \"price\": 12.99,\n            \"type\": \"Lunch\",\n            \"restaurantName\": \"The Cozy Cafe\"\n        },\n        {\n            \"name\": \"Dinner Deluxe\",\n            \"description\": \"Steak, mashed potatoes, and vegetables\",\n            \"price\": 19.99,\n            \"type\": \"Dinner\",\n            \"restaurantName\": \"The Cozy Cafe\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/restaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get restaurant by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/restaurants/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"restaurants",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create commande",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"idRestaurant\": 1,\n  \"idMenu\": 1,\n  \"idClient\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/commandes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"commandes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create commande Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"idRestaurant\": 1,\n  \"idMenu\": 3,\n  \"idClient\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/commandes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"commandes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all commands",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/commandes/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"commandes",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete command by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9004/api/commandes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9004",
+					"path": [
+						"api",
+						"commandes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
