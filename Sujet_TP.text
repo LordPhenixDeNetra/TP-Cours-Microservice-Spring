@@ -1,0 +1,18 @@
+L'application UFOOD est une application qui permet à des utilisateurs de commander des plats à emporter dans des restaurants partenaires.
+
+Il est constitué de 3 services :
+Un service de gestion des utilisateurs, des restaurants et des commandes.
+Chacun de ces services est indépendant, possède sa propre base de données et
+communique avec les autres via des API REST (Dans la cadre de ce TP, c'est le framework FEIGN qui est utilisé ).
+
+
+
+Pour la bonne gestion de ces services, il y a un service de découverte et d'enregistrement des services (Eureka) et
+un service de gateway (Spring Cloud Gateway) qui permet de faire le lien entre les services.
+
+Le service (USER-SERVICE) permet de gérer les utilisateurs. Il expose un service CRUD pour modifier, ajouter, supprimer et récupérer des utilisateurs.
+Le service (RESTAURANT-SERVICE) permet de gérer les restaurants. Il expose un service CRUD pour modifier, ajouter, supprimer et récupérer des restaurants.
+Le service (COMMANDE-SERVICE) permet de gérer les commandes. Il expose un service CRUD pour modifier, ajouter, supprimer et récupérer des commandes.
+Lorsque l'application est lancée, les services sont enregistrés dans Eureka (DISCOVERY-SERVICE) et sont disponibles via le gateway (GATEWAY-SERVICE).
+
+

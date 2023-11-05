@@ -7,4 +7,4 @@ services:
       - 'MYSQL_ROOT_PASSWORD=root'
       - 'MYSQL_USER=etudiant'
     ports:
-      - 3306:3306 # permet de faire le port forwarding entre le port 3306 du conteneur et le port 3306 de la machine hôte
+      - 3309:3306 # permet de faire le port forwarding entre le port 3306 du conteneur et le port 3306 de la machine hôte
