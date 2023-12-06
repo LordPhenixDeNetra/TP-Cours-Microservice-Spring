@@ -1,0 +1,24 @@
+GUIDE INSTALLATION:
+
+
+* Au préalable, il faut installer sur votre poste:
+    -> Intellij IDEA
+    -> Docker (docker engine) ou Docker Desktop
+
+* Cloner le projet sur votre poste
+
+* Ouvrir le projet dans Intellij IDEA
+
+* Lancer le projet dans l'odre suivante:
+    -> le service de découverte (discovery-service) (port: 9000)
+    -> le service gateway (gateway-service) (port: 9001)
+    -> le service pour les utilisateurs (user-service) (port: 9002)
+    -> le service pour la gestion des restaurants (restaurant-service) (port: 9003)
+    -> le service pour la gestion des commandes (order-service) (port: 9004)
+
+
+* Dans chaque service, on y trouve un fichier compose.yaml qui lui permet de creer sa propre base de données via une image docker.
+Lorsque vous lancez un service, avec la dependance spring-boot-docker-compose, il va automatiquement creer la base de données.
+
+
+
