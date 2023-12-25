@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+
+/**
+ * Classe permettant de retourner une réponse
+ */
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

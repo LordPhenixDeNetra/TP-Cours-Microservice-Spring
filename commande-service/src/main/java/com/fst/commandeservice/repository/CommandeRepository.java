@@ -5,6 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
+
+/**
+ * Repository permettant de gérer les commandes
+ */
 public interface CommandeRepository extends JpaRepository<Commande, Long> {
 
     /**
