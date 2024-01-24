@@ -7,6 +7,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  *  Service permettant de gérer les restaurants
  */
@@ -92,4 +94,11 @@ public class RestaurantService {
 
     }
 
+    /**
+     * Permet de récupérer tous les restaurants
+     * @return liste des restaurants
+     */
+    public List<Restaurant> getAll() {
+        return restaurantRepository.findAll();
+    }
 }

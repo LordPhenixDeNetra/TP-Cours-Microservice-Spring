@@ -143,4 +143,25 @@ public class RestaurantController {
             );
         }
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<ServiceResponse> getAll() {
+        try {
+            return ResponseEntity.ok(
+                    ServiceResponse.builder()
+                    .success(true)
+                    .message("All restaurants")
+                    .data(restaurantService.getAll())
+                    .build()
+            );
+        } catch (Exception e) {
+            return ResponseEntity.ok(
+                    ServiceResponse.builder()
+                    .success(false)
+                    .message(e.getMessage())
+                    .build()
+            );
+        }
+    }
+
 }
