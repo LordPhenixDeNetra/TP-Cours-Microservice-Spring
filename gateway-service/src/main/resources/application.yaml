@@ -28,3 +28,4 @@ eureka:
       defaultZone: ${EUREKA_URI:http://localhost:9000/eureka}
 server:
   port: 9001
+

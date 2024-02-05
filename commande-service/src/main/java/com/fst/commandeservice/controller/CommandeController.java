@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/commandes")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin("*")
 public class CommandeController {
     // permet d'injecter le service CommandeService
     private final CommandeService commandeService;

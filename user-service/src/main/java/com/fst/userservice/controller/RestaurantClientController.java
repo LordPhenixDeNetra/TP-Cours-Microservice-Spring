@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/restaurant-client") // permet de définir le chemin de base pour toutes les méthodes de la classe
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class RestaurantClientController {
     private final RestaurantClientService restaurantClientService;
 
